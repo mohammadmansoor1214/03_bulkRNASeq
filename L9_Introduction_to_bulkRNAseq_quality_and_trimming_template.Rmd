@@ -1,0 +1,205 @@
+---
+title: "Lecture 9: Introduction to bulk-RNAseq DE Analysis: Quality and Trimming"
+author: "Your Name"
+date: "mm/dd/yyyy"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    css: "style.css"  
+---
+<br/>  
+
+
+# 1. Objectives and Goals  
+*** 
+
+The primary objective of this assignment is to illustrate that you understand the first steps of bulk-RNAseq data processing as it pertains to raw sequencing quality control and trimming.  By the end of this lecture and assignment you should be able to:
+
+- Define what a fastq file is and what it contains
+- ability to run three different softwares: `fastqcr`, `multiqc`, and `cutadapt`
+- interpret quality control reports generated from `fastqcr` and use those to guide your trimming and clean up process  
+- understand the importance of viewing and cleaning raw sequence data
+
+<br/>
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br/>
+
+# 2. Install/Load packages  
+*** 
+
+This section is always required.  You will load all packages necessary for the scope of the assignment in between the code blocks.  
+
+Write code to load in the following R packages:  
+
+* fastqcr  
+
+```{r, include =TRUE, echo=TRUE, message = FALSE}
+# TO DO
+
+```
+
+<br/>
+
+# 3. Bulk RNA-seq Quality and Trimming  
+***
+
+**Purpose**:  To understand why it is critical to look at raw data quality before and after trimming and how to run commands to generate these data sets.  
+
+
+<div style="background-color: #cfc ; padding: 10px; border: 1px solid green;"> 
+**Your Assigned Samples:**  
+* 30_min_N4_peptide_PRN-694_rep2    
+
+</div>
+
+
+## **Critical Thinking Exercises**   {.tabset .tabset-fade .tabset-pills}  
+
+
+### Question 1  
+Why is it important to run fastqc before and after trimming?  
+
+<br/>  
+
+### Question 2  
+What is the expected file input type into cutadapt?  What type of file is returned? 
+
+<br/>  
+
+### Question 3  
+Compare and contrast the images produced from fastqc before and after trimming based on your sample.  
+
+<br/>  
+
+### Question 4  
+Why is important to trim and/or clean your samples before aligning them?  
+
+<br/> 
+
+### Question 5  
+Let's say you want to use a different program and/or algorithm for cleaning your fastq files.  Name at least 2 different softwares that accomplish the same task as cutadapt (note, they do not have the be the ones listed in the lecture).  
+
+<br/>  
+
+### Question 6  
+Let's say I have 10 paired-end fastq files and I perform quality checks using fastqcr.  How many total fastqc reports (.html) can I expect to generate?  How about if it were 10 single-end fastq files?  
+
+<br/>  
+
+### Question 7  
+Look at the parameters specified in the cutadapt call.  What are some of the graphs and/or statistics generated from fastqcr, that may have influenced how I chose to use/implement those parameters.  Explain.  
+
+<br/>  
+
+### Question 8  
+Right now, you are running all of the fastq files in the directory I gave you. Let's say I told you to only run `fastqc` on just the R1 reads.  Explain how you would do this and what steps you would need to do to make sure fastqc only ran on R1 and not R2.  **Note: You can explain how to do this either using regex or without using regex; pick one that makes the most sense to you**  
+
+
+<br/>  
+<br/>  
+
+
+## 3.1 Raw sequencing quality assessment  
+1.  Write code to run your samples through Fastqc  
+
+```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 1 - in R
+# TO DO
+
+```
+
+**OR**  
+
+```{bash, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 2 - in bash
+#Hint: Instead of listing all fastq files as a space delimited list, use a regex to grab all the fastq files
+ 
+# TO DO
+
+```
+
+2.  Write code to generate an aggregated multi-qc report of all samples in the directory  
+```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 1 - in R
+# TO DO
+
+```
+
+**OR**
+
+```{bash, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 2 - in bash
+# TO DO
+
+```
+
+## 3.2 Trimming and read clean up  
+
+3.  Write code to run your assigned samples through the trimming algorithm, `cutadapt`.  Set the -q parameters to 20, remove 3' adapters on both the R1 and R2 reads, remove any paired reads where at least one read of the pair is less than 10 bases in length.  
+
+```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 1 - in R
+# TO DO
+
+```
+
+**OR**  
+
+```{bash, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 2 - in bash
+# Hint: For now, since we have not covered automation, the easiest way to do this is to call the command for each sample.
+ 
+# TO DO
+
+```
+
+## 3.3 Trimmed sequencing quality assessment  
+
+4.  Write code to run fastqc after trimming on all samples.  
+```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 1 - in R
+# TO DO
+
+```
+
+**OR**  
+
+```{bash, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 2 - in bash
+# Hint: Instead of listing all fastq files as a space delimited list, use a regex to grab all the fastq files
+ 
+ # TO DO
+
+```
+5.  Write code to generate an aggregated multi-qc report of all samples in the directory **post** sequence clean up on the trimmed fastq files.  
+```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 1 - in R
+# TO DO
+
+```
+
+**OR**  
+
+```{bash, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
+# OPTION 2 - in bash
+# TO DO
+
+```
+<br/>
+<br/>
+
+
+# 6. Session info
+*** 
+
+Finally, we will __always__ end our Rmarkdown documents with the session information.  This provides version control so if there is any issue with your code or results, we can trace it back to the session information and try running it on the same system.  You just need to always include this section, although no changes will ever need to be made here.
+
+```{r, echo=TRUE}
+# session info
+sessionInfo()
+```
