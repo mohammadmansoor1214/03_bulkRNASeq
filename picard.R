@@ -1,0 +1,1 @@
+system(command = 'java -jar /home/mansoomo/software/picard/build.xlm CollectRnaSeqMetrics I=/home/mansoomo/data/bulk_RNA_seq/bam_files O=/home/mansoomo/03_bulkRNASeq REF_FLAT=/home/mansoomo/data/bulk_RNA_seq/reference_data/mm10.refflat STRAND=NONE RIBOSOMAL INTERVALS=/home/mansoomo/data/bulk_RNA_seq/reference_data/mm10_primary_ribosomalRNA_interval_list.txt')
