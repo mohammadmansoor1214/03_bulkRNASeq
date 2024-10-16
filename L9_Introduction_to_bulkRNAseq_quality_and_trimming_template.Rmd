@@ -126,6 +126,11 @@ Right now, you are running all of the fastq files in the directory I gave you. L
 2.  Write code to generate an aggregated multi-qc report of all samples in the directory  
 ```{r, eval=TRUE, echo = TRUE, include = TRUE, message = TRUE}
 # OPTION 1 - in R
+system(command = "multiqc
+       /home/mansoomo/03_bulkRNASeq/fastqc_output/ --filename 
+       step0_fastqc_results.html --outdir
+       /home/mansoomo/03_bulkRNASeq/fastqc_output/")
+       
 # TO DO
 
 ```
