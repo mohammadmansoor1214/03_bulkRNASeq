@@ -1,3 +1,4 @@
+geneName	SKG_rep1
 Zc3h14	7035
 Troap	5
 Clca2	0
